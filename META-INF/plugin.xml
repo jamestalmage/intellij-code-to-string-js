@@ -1,0 +1,32 @@
+<idea-plugin version="2">
+  <id>com.jrtechnical.codetostring</id>
+  <name>Code to String</name>
+  <version>1.0</version>
+  <vendor email="james.talmage@jrtechnical.com"
+          url="https://github.com/jamestalmage/intellij-code-to-string-js"
+          >JR Technical</vendor>
+
+  <description><![CDATA[
+      Wraps selected Javascript Code in a string<br>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      First Release!<br>
+    ]]>
+  </change-notes>
+
+  <idea-version since-build="131"/>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <actions>
+      <action class="com.jrtechnical.codetostring.CodeToString"
+              id="CodeToString"
+              text="Code to String"
+              description="Convert JS code to a string"
+              >
+          <keyboard-shortcut first-keystroke="ctrl shift C" keymap="$default"/>
+      </action>
+  </actions>
+
+</idea-plugin>
