@@ -27,9 +27,16 @@ public class CodeToString extends EditorAction{
                     }
 
                     Document document = editor.getDocument();
+                    FoldingModel fm = editor.getFoldingModel();
 
-                    int firstLine = selectionModel.getSelectionStartPosition().getLine();
-                    final int lastSelectedLine = selectionModel.getSelectionEndPosition().getLine();
+                    VisualPosition startVisualPosition = selectionModel.getSelectionStartPosition();
+                    VisualPosition endVisualPosition = selectionModel.getSelectionEndPosition();
+
+                    LogicalPosition startLogicalPosition = editor.visualToLogicalPosition(startVisualPosition);
+                    LogicalPosition endLogicalPosition = editor.visualToLogicalPosition(endVisualPosition);
+
+                    int firstLine = startLogicalPosition.line;//.getLine();
+                    final int lastSelectedLine = endLogicalPosition.line;
                     final int selectionStart = selectionModel.getSelectionStart();
                     final int endOfFirstSelectedLine = document.getLineEndOffset(firstLine);
                     final int endOffset = document.getLineEndOffset(lastSelectedLine);

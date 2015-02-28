@@ -25,7 +25,7 @@
               text="Code to String"
               description="Convert JS code to a string"
               >
-          <keyboard-shortcut first-keystroke="ctrl shift C" keymap="$default"/>
+          <keyboard-shortcut first-keystroke="control shift C" keymap="$default"/>
       </action>
   </actions>
 
