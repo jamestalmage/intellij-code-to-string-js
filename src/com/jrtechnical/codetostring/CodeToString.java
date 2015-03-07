@@ -71,17 +71,17 @@ public class CodeToString extends EditorAction{
                             }
                         }
                         if(started){
-                            sw.append('"');
+                            sw.append('\'');
                             if(sp != -1){
-                                escapeJavaStyleString(sw,line.substring(min),false);
+                                escapeJavaStyleString(sw,line.substring(min), true, false);
                             }
-                            sw.append('"');
+                            sw.append('\'');
                             if(i < lastLine) sw.append(",");
                         }
                         sw.append('\n');
                     }
                     appendSpaces(sw,min);
-                    sw.append("].join(\"\\n\");");
+                    sw.append("].join(\'\\n\');");
                     for(int i = lastLine+1; i < lines.length; i++) sw.append('\n');
 
 
@@ -141,7 +141,7 @@ public class CodeToString extends EditorAction{
      * @param escapeSingleQuote escapes single quotes if <code>true</code>
      *
      */
-    private static void escapeJavaStyleString(StringWriter out, String str, boolean escapeSingleQuote)  {
+    private static void escapeJavaStyleString(StringWriter out, String str, boolean escapeSingleQuote, boolean escapeDoubleQuote)  {
         if (out == null) {
             throw new IllegalArgumentException("The Writer must not be null");
         }
@@ -199,7 +199,9 @@ public class CodeToString extends EditorAction{
                         out.write('\'');
                         break;
                     case '"':
-                        out.write('\\');
+                        if(escapeDoubleQuote){
+                          out.write('\\');
+                        }
                         out.write('"');
                         break;
                     case '\\':
